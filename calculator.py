@@ -66,8 +66,8 @@ class Calculator(QWidget):
         self.b_float = QPushButton(",", self)
         self.hbox_fourth.addWidget(self.b_float)
 
-        self.b_clear = QPushButton("Clear", self)
-        self.hbox_fourth.addWidget(self.b_clear)
+        self.b_delete = QPushButton("Delete", self)
+        self.hbox_fourth.addWidget(self.b_delete)
 
         self.b_div = QPushButton("/", self)
         self.hbox_fourth.addWidget(self.b_div)
@@ -80,7 +80,7 @@ class Calculator(QWidget):
         self.b_mul.clicked.connect(lambda: self._operation("*"))
         self.b_div.clicked.connect(lambda: self._operation("/"))
         self.b_result.clicked.connect(self._result)
-        self.b_clear.clicked.connect(self._clear)
+        self.b_clear.clicked.connect(self._delete)
 
         self.b_1.clicked.connect(lambda: self._button("1"))
         self.b_2.clicked.connect(lambda: self._button("2"))
@@ -101,7 +101,7 @@ class Calculator(QWidget):
         if param == '.':
             for i in range(len(line)):
                 if line[i] == '.':
-                    self.input.setText("Error! Incorrect number.")
+                    self.input.setText("Error, nepravilny vvod")
 
     def _operation(self, op):
         self.num_1 = float(self.input.text())
@@ -110,7 +110,7 @@ class Calculator(QWidget):
 
     def _result(self):
         if self.input.text() == '':
-            self.input.setText("Error! Enter number.")
+            self.input.setText("Error, net dannyh")
         else:
             self.num_2 = float(self.input.text())
 
@@ -122,11 +122,11 @@ class Calculator(QWidget):
                 self.input.setText(str(self.num_1 * self.num_2))
             if self.op == '/':
                 if self.num_2 == 0:
-                    self.input.setText('Error! Division by zero')
+                    self.input.setText('Error, delenye na nol nelzya')
                 else:
                     self.input.setText(str(self.num_1 / self.num_2))
 
-    def _clear(self):
+    def _delete(self):
         self.input.setText(str())
 
 
