@@ -80,7 +80,7 @@ class Calculator(QWidget):
         self.b_mul.clicked.connect(lambda: self._operation("*"))
         self.b_div.clicked.connect(lambda: self._operation("/"))
         self.b_result.clicked.connect(self._result)
-        self.b_clear.clicked.connect(self._delete)
+        self.b_delete.clicked.connect(self._delete)
 
         self.b_1.clicked.connect(lambda: self._button("1"))
         self.b_2.clicked.connect(lambda: self._button("2"))
